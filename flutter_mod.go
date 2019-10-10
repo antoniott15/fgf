@@ -33,14 +33,10 @@ func installFontsOnFlutterProject(flutterProjectDir string, font font) error {
 		return errFlutterInvalidPubSpec
 	}
 
-	fmt.Printf("%+v\n", flutter)
-
-	fonts, ok := flutter["fonts"].([]map[interface{}]interface{})
+	fonts, ok := flutter["fonts"].([]interface{})
 	if !ok {
 		return errFlutterInvalidPubSpec
 	}
-
-	fmt.Printf("%+v\n", fonts)
 
 	assets := []map[interface{}]interface{}{}
 	for _, variant := range font.Variants {
@@ -80,7 +76,10 @@ func installFontsOnFlutterProject(flutterProjectDir string, font font) error {
 	flutter["fonts"] = fonts
 	completePub["flutter"] = flutter
 
-	fmt.Printf("%+v\n", completePub)
+	newData, err := yaml.Marshal(completePub)
+	if err != nil {
+		return err
+	}
 
-	return nil
+	return ioutil.WriteFile(pubSpecFilename, newData, 0644)
 }
