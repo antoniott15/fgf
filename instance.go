@@ -74,11 +74,11 @@ func (instance *fgfInstance) sync() error {
 		if err != nil {
 			return err
 		}
-	}
 
-	err = instance.saveToFile()
-	if err != nil {
-		return err
+		err = instance.saveToFile()
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
