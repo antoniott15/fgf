@@ -45,7 +45,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(searchType)
+	fmt.Printf("Installing %s...\n", searchType)
 
 	err = downloadFontInDir("./fonts", instance.Database[searchIndex])
 	if err != nil {
@@ -56,5 +56,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println("Done")
 
 }
