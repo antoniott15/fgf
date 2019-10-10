@@ -17,9 +17,9 @@ func main() {
 		panic(err)
 	}
 
-	fonts := []string{}
-	for _, f := range instance.Database {
-		fonts = append(fonts, f.Family)
+	fonts := make([]string, len(instance.Database))
+	for i, f := range instance.Database {
+		fonts[i] = f.Family
 	}
 
 	searcher := func(input string, index int) bool {
@@ -39,12 +39,16 @@ func main() {
 		Items:             fonts,
 	}
 
-	_, searchType, err := promptSearchType.Run()
+	searchIndex, searchType, err := promptSearchType.Run()
 	if err != nil {
 		fmt.Printf("Prompt failed %v\n", err)
 		panic(err)
 	}
 
 	fmt.Println(searchType)
-
+	fmt.Println(instance.Database[searchIndex])
+	err = downloadFontInDir("./fonts", instance.Database[searchIndex])
+	if err != nil {
+		panic(err)
+	}
 }
