@@ -46,9 +46,15 @@ func main() {
 	}
 
 	fmt.Println(searchType)
-	fmt.Println(instance.Database[searchIndex])
-	err = downloadFontInDir("./fonts", instance.Database[searchIndex])
+
+	err = installFontsOnFlutterProject("./", instance.Database[searchIndex])
 	if err != nil {
 		panic(err)
 	}
+
+	err = downloadFontInDir("./", instance.Database[searchIndex])
+	if err != nil {
+		panic(err)
+	}
+
 }

@@ -33,7 +33,6 @@ func downloadFontInDir(dir string, font font) error {
 		ext := extractExtensionFromFileLink(fileLink)
 		fileFontName := fmt.Sprintf("%s-%s.%s", font.Family, variant, ext)
 		fileFontName = strings.ReplaceAll(fileFontName, " ", "-")
-		fmt.Println("Downloading:", fileFontName)
 
 		res, err := http.Get(fileLink)
 		if err != nil {
