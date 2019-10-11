@@ -35,5 +35,6 @@ func findFontByCategory(database []font, category string) (searchResults, error)
 			}
 		}
 	}
+	
 	return results, nil
 }

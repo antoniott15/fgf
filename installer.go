@@ -57,7 +57,6 @@ func downloadFontInDir(dir string, font font) error {
 		}
 
 		defer out.Close()
-
 		_, err = io.Copy(out, res.Body)
 		if err != nil {
 			return err
