@@ -22,7 +22,7 @@ Alterantive, you can download the binaries directly from [here](https://github.c
 First, you need to be in your flutter project dir, fgf search your pubspec.yaml and modify it adding the new font description.
 
 
-## Fonts
+## Google API
 
 For google fonts API you can take your own credentiasls, create google_fonts.go file and paste this
 
