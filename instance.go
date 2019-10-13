@@ -84,10 +84,16 @@ func (instance *fgfInstance) sync() error {
 	return nil
 }
 
-func newFGFInstance() (*fgfInstance, error) {
-	return &fgfInstance{
+func newFGFInstance(opts ...fgfOptions) (*fgfInstance, error) {
+	ins := &fgfInstance{
 		Filename:   "fgf.json",
 		FGFVersion: "0.0.2",
 		fontsDir:   "/fonts",
-	}, nil
+	}
+
+	for _, opt := range opts {
+		opt.apply(ins)
+	}
+
+	return ins, nil
 }

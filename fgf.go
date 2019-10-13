@@ -7,7 +7,7 @@ import (
 const defaultWorkspace = "./"
 
 func main() {
-	instance, err := newFGFInstance()
+	instance, err := newFGFInstance() // With deafults
 	if err != nil {
 		panic(err)
 	}
