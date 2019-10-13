@@ -8,6 +8,8 @@ Download and link Google Fonts in your flutter project automatically
 
 ## Install
 
+### From binaries
+
 If you're using MacOS, you can to install using [homebrew](https://brew.sh/)
 
 ```
@@ -16,6 +18,14 @@ brew install fgf
 ```
 
 As alternative way, you can download the binaries directly from [here](https://github.com/antoniott15/fgf/releases)
+
+### From Source Code
+
+Using `go get`, don't forget to add your $GOBIN add your $PATH to it works.
+
+```
+go get -u github.com/antoniott15/fgf
+```
 
 ## Usage
 
