@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"os"
 	"path"
 	"time"
@@ -14,6 +13,7 @@ type fgfInstance struct {
 	Database   []font    `json:"database"`
 	FGFVersion string    `json:"fgfVersion"`
 	Filename   string    `json:"filename"`
+	fontsDir   string
 }
 
 func (instance *fgfInstance) fetchFonts() error {
@@ -35,7 +35,7 @@ func (instance *fgfInstance) fetchFonts() error {
 func (instance *fgfInstance) loadFromFile() error {
 	filepath := path.Join(os.TempDir(), instance.Filename)
 
-	log.Println("Loading", filepath)
+	// log.Println("Loading", filepath)
 
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
@@ -48,7 +48,7 @@ func (instance *fgfInstance) loadFromFile() error {
 func (instance *fgfInstance) saveToFile() error {
 	filepath := path.Join(os.TempDir(), instance.Filename)
 
-	log.Println("Saving ", filepath)
+	// log.Println("Saving ", filepath)
 
 	data, err := json.Marshal(instance)
 	if err != nil {
@@ -67,7 +67,7 @@ func (instance *fgfInstance) sync() error {
 		return instance.sync()
 	}
 
-	log.Println("Syncing")
+	// log.Println("Syncing")
 
 	if !instance.LastFetch.Add(6 * time.Hour).After(time.Now()) {
 		err = instance.fetchFonts()
@@ -87,6 +87,7 @@ func (instance *fgfInstance) sync() error {
 func newFGFInstance() (*fgfInstance, error) {
 	return &fgfInstance{
 		Filename:   "fgf.json",
-		FGFVersion: "0.0.1",
+		FGFVersion: "0.0.2",
+		fontsDir:   "/fonts",
 	}, nil
 }

@@ -19,3 +19,13 @@ type googleFontsResponse struct {
 	Kind  string `json:"kind"`
 	Items []font `json:"items"`
 }
+
+func getFontByFamilyName(fonts []font, familyName string) (font, error) {
+	for _, f := range fonts {
+		if f.Family == familyName {
+			return f, nil
+		}
+	}
+
+	return font{}, errFamilyFontNotFound
+}
