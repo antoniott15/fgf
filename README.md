@@ -28,3 +28,11 @@ fgf
 ```
 
 and search your font by family name.
+
+Also, you can use directly:
+
+```
+fgf add <YOUR FONT NAME>
+```
+
+That's all.
