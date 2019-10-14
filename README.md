@@ -6,6 +6,10 @@
 
 Download and link Google Fonts in your flutter project automatically
 
+```
+Contribution: This project are ⚠️ Work In Progress, if you have and idea to complete it only write an issue.
+```
+
 ## Install
 
 ### From binaries
